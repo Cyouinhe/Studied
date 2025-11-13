@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    currentStyleSheet = "";
 }
 
 MainWindow::~MainWindow()
@@ -23,13 +24,6 @@ void MainWindow::on_actionOpen_triggered()
     qDebug()<<"文件名称："<<fileName;
 }
 
-void MainWindow::on_actionOpen_2_triggered()
-{
-    QColor color = QColorDialog::getColor(Qt::red, this, "颜色对话框", QColorDialog::ShowAlphaChannel);
-    qDebug()<<"color:"<<color;
-    qDebug()<<"RGB值:"<<color.red()<<color.green()<<color.blue();
-    qDebug()<<"十六进制:"<<color.name();
-}
 
 void MainWindow::on_actionOpen_3_triggered()
 {
@@ -41,5 +35,38 @@ void MainWindow::on_actionOpen_3_triggered()
     }
     else{
         qDebug()<<"没有选择字体";
+    }
+}
+
+void MainWindow::on_actionOpen_2_triggered()
+{
+    QColor color = QColorDialog::getColor(Qt::red, this, "选择字体颜色", QColorDialog::ShowAlphaChannel);
+    if(color.isValid())
+    {
+        QString newStyle = QString("color:%1;").arg(color.name());
+        currentStyleSheet += newStyle;
+        ui->label->setStyleSheet(currentStyleSheet);
+        qDebug()<<"字体颜色为："<<color.name();
+        qDebug()<<currentStyleSheet;
+    }
+    else{
+        qDebug()<<"取消选择颜色";
+    }
+
+}
+
+void MainWindow::on_action_B_triggered()
+{
+    QColor color = QColorDialog::getColor(Qt::red, this, "选择字体颜色", QColorDialog::ShowAlphaChannel);
+    if(color.isValid())
+    {
+        QString newStyle = QString("background-color:%1;").arg(color.name());
+        currentStyleSheet += newStyle;
+        ui->label->setStyleSheet(currentStyleSheet);
+        qDebug()<<"背景颜色为："<<color.name();
+        qDebug()<<currentStyleSheet;
+    }
+    else{
+        qDebug()<<"取消选择颜色";
     }
 }

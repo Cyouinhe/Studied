@@ -22,8 +22,11 @@ private slots:
 
     void on_actionOpen_3_triggered();
 
+    void on_action_B_triggered();
+
 private:
     Ui::MainWindow *ui;
+    QString currentStyleSheet;
 };
 
 #endif // MAINWINDOW_H
