@@ -49,6 +49,7 @@
     <property name="title">
      <string>文件&amp;F</string>
     </property>
+    <addaction name="actionOpen"/>
    </widget>
    <widget class="QMenu" name="menu_C">
     <property name="title">
