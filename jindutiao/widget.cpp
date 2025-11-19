@@ -41,3 +41,35 @@ void Widget::on_pushButton_2_clicked()
     errorDialog->setWindowTitle("错误消息对话框");
     errorDialog->showMessage("错误！");
 }
+
+void Widget::on_pushButton_3_clicked()
+{
+    QWizard wizard(this);
+    wizard.setWindowTitle("向导对话框");
+    wizard.addPage(createPage1());
+    wizard.addPage(createPage2());
+    wizard.addPage(createPage3());
+    wizard.exec();
+}
+
+QWizardPage *Widget::createPage1()
+{
+    QWizardPage *page = new QWizardPage();
+    page->setTitle("介绍");
+    return page;
+}
+QWizardPage *Widget::createPage2()
+{
+    QWizardPage *page = new QWizardPage();
+    page->setTitle("用户选择信息");
+    return page;
+}
+
+QWizardPage *Widget::createPage3()
+{
+    QWizardPage *page = new QWizardPage();
+    page->setTitle("结束");
+    return page;
+}
+
+

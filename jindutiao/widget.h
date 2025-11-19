@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QErrorMessage>
+#include <QWizard>
 
 namespace Ui {
 class Widget;
@@ -21,9 +22,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Widget *ui;
     QErrorMessage *errorDialog;
+    QWizardPage *createPage1(), *createPage2(), *createPage3();
 };
 
 #endif // WIDGET_H
